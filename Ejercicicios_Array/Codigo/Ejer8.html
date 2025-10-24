@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Función listar(arr)</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f6f8fa; color: #222; padding: 40px; }
+    .container { max-width: 600px; margin: 0 auto; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    label { display: block; margin-top: 15px; font-weight: bold; }
+    textarea { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; min-height: 60px; }
+    button { margin-top: 15px; padding: 10px 16px; border: none; border-radius: 8px; background: #0078d7; color: white; font-size: 15px; cursor: pointer; }
+    button:hover { background: #005fa3; }
+    .result { margin-top: 20px; padding: 10px; border-radius: 8px; background: #eef3ff; border: 1px dashed #b6c8ff; }
+    pre { background: #222; color: #fff; padding: 10px; border-radius: 8px; overflow-x: auto; margin-top: 20px; }
+  </style>
+    <nav>
+        <a href="../PaginaNav.html">Volver al inicio</a>
+    </nav>  
+</head>
+<body>
+  <div class="container">
+    <h2>Función <code>listar(arr)</code></h2>
+    <p>Esta función recibe un array de cadenas y devuelve una sola cadena con los elementos separados por guiones.</p>
+
+    <label for="arrayInput">Introduce los elementos del array (separados por comas):</label>
+    <textarea id="arrayInput" placeholder="Ejemplo: rojo,verde,azul"></textarea>
+
+    <button id="run">Generar cadena</button>
+
+    <div id="output" class="result">Aquí aparecerá el resultado.</div>
+
+    <h3>Código de la función:</h3>
+    <pre>
+function listar(arr) {
+  var resultado = '';
+
+  for (var i = 0; i < arr.length; i++) {
+    resultado = resultado + arr[i];
+    if (i < arr.length - 1) {
+      resultado = resultado + '-';
+    }
+  }
+
+  return resultado;
+}
+    </pre>
+  </div>
+
+  <script>
+    function listar(arr) {
+      var resultado = '';
+
+      for (var i = 0; i < arr.length; i++) {
+        resultado = resultado + arr[i];
+        if (i < arr.length - 1) {
+          resultado = resultado + '-';
+        }
+      }
+
+      return resultado;
+    }
+
+    function parseInput(text) {
+      var parts = text.split(',');
+      var elementos = [];
+      var idx = 0;
+
+      for (var i = 0; i < parts.length; i++) {
+        var c = parts[i].trim();
+        if (c.length > 0) {
+          elementos[idx] = c;
+          idx++;
+        }
+      }
+
+      return elementos;
+    }
+
+    document.getElementById('run').addEventListener('click', function() {
+      var arrTexto = document.getElementById('arrayInput').value.trim();
+      var salida = document.getElementById('output');
+
+      if (arrTexto.length === 0) {
+        salida.textContent = 'Por favor introduce al menos un elemento.';
+        salida.style.color = 'red';
+        return;
+      }
+
+      var arr = parseInput(arrTexto);
+      var resultado = listar(arr);
+      salida.style.color = '#222';
+      salida.textContent = 'Resultado: ' + resultado;
+    });
+  </script>
+</body>
+</html>

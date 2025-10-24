@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>min(arr, 'v'|'i') — Demo</title>
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; padding: 28px; background:#f6f8fa; color:#0b1220 }
+    .card { background: #fff; border-radius: 12px; box-shadow: 0 6px 18px rgba(12,20,30,0.06); padding:20px; max-width:720px; margin:auto }
+    label { display:block; margin-bottom:8px; font-weight:600 }
+    textarea { width:100%; min-height:64px; padding:8px; border:1px solid #e6eaef; border-radius:8px; font-family:monospace }
+    .row { display:flex; gap:12px; align-items:center; margin-top:12px }
+    select, button { padding:8px 12px; border-radius:8px; border:1px solid #dfe7ee; background:#fff }
+    button { cursor:pointer }
+    .result { margin-top:18px; padding:12px; border-radius:8px; background:#fbfdff; border:1px dashed #d7e6ff }
+    .hint { color:#556; font-size:13px; margin-top:6px }
+    pre { background:#0b1220; color:#fff; padding:10px; border-radius:8px; overflow:auto }
+  </style>
+    <nav>
+        <a href="../PaginaNav.html">Volver al inicio</a>
+    </nav>
+</head>
+<body>
+  <div class="card">
+    <h2>Función <code>min(arr, 'v' | 'i')</code> — demo</h2>
+
+    <label for="input">Introduce un array de números (separados por comas):</label>
+    <textarea id="input" placeholder="ej. 4,5,7,10,2"></textarea>
+    <div class="hint">Notas: el array debe tener al menos un número y no debe contener duplicados. El segundo parámetro debe ser 'v' (valor) o 'i' (índice).</div>
+
+    <div class="row">
+      <label for="mode">Devolver:</label>
+      <select id="mode">
+        <option value="v">Valor ('v')</option>
+        <option value="i">Índice ('i')</option>
+      </select>
+
+      <button id="run">Calcular</button>
+      <button id="example">Ejemplo</button>
+    </div>
+
+    <div id="output" class="result" aria-live="polite">Aquí aparecerá el resultado.</div>
+
+    <h3>Implementación (sin métodos de array)</h3>
+    <pre id="code">function min(arr, tipo) {
+  var menor = arr[0];
+  var indice = 0;
+
+  for (var i = 1; i < arr.length; i++) {
+    if (arr[i] < menor) {
+      menor = arr[i];
+      indice = i;
+    }
+  }
+
+  if (tipo === 'v') return menor;
+  if (tipo === 'i') return indice;
+}</pre>
+  </div>
+
+  <script>
+    // La función min cumple la condición: NO usa métodos del objeto Array
+    function min(arr, tipo) {
+      var menor = arr[0];
+      var indice = 0;
+
+      for (var i = 1; i < arr.length; i++) {
+        if (arr[i] < menor) {
+          menor = arr[i];
+          indice = i;
+        }
+      }
+
+      if (tipo === 'v') return menor;
+      if (tipo === 'i') return indice;
+      return undefined;
+    }
+
+    // Helper: parsear la entrada de texto en un array de números sin usar push()
+    function parseInput(text) {
+      // dividir por comas y/o espacios
+      var parts = text.split(/[,\s]+/).filter(function(t){ return t !== ''; });
+
+      // construir array numérico sin usar métodos de Array (evitamos push en el bucle)
+      var nums = [];
+      var idx = 0;
+      for (var i = 0; i < parts.length; i++) {
+        var n = Number(parts[i]);
+        if (!isFinite(n)) return { error: 'Entrada inválida: "' + parts[i] + '" no es un número.' };
+        nums[idx] = n; idx++;
+      }
+
+      if (idx === 0) return { error: 'Introduce al menos un número.' };
+      return { value: nums };
+    }
+
+    var output = document.getElementById('output');
+    var btn = document.getElementById('run');
+    var ex = document.getElementById('example');
+
+    btn.addEventListener('click', function() {
+      var txt = document.getElementById('input').value.trim();
+      var mode = document.getElementById('mode').value;
+
+      var parsed = parseInput(txt);
+      if (parsed.error) {
+        output.textContent = parsed.error;
+        output.style.color = '#b41c1c';
+        return;
+      }
+
+      var arr = parsed.value;
+
+      // Validación simple: comprobar duplicados (solo para ayudar al usuario)
+      for (var a = 0; a < arr.length; a++) {
+        for (var b = a + 1; b < arr.length; b++) {
+          if (arr[a] === arr[b]) {
+            output.textContent = 'Error: el array contiene duplicados (ej. ' + arr[a] + ').';
+            output.style.color = '#b41c1c';
+            return;
+          }
+        }
+      }
+
+      var res = min(arr, mode);
+      output.style.color = '#0b1220';
+      output.textContent = "Resultado: " + String(res);
+    });
+
+    ex.addEventListener('click', function() {
+      document.getElementById('input').value = '4,5,7';
+      document.getElementById('mode').value = 'v';
+      btn.click();
+    });
+
+    // Ejecutar un ejemplo inicial
+    document.getElementById('input').value = '4,5,7';
+    document.getElementById('mode').value = 'v';
+    // no hacemos click automático para no sorprender al usuario
+  </script>
+</body>
+</html>

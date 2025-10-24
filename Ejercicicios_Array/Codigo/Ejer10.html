@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Función precio(producto)</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f6f8fa; color: #222; padding: 40px; }
+    .container { max-width: 650px; margin: 0 auto; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    label { display: block; margin-top: 15px; font-weight: bold; }
+    input, textarea { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
+    button { margin-top: 15px; padding: 10px 16px; border: none; border-radius: 8px; background: #0078d7; color: white; font-size: 15px; cursor: pointer; }
+    button:hover { background: #005fa3; }
+    .result { margin-top: 20px; padding: 10px; border-radius: 8px; background: #eef3ff; border: 1px dashed #b6c8ff; }
+    pre { background: #222; color: #fff; padding: 10px; border-radius: 8px; overflow-x: auto; margin-top: 20px; }
+  </style>
+    <nav>
+        <a href="../PaginaNav.html">Volver al inicio</a>
+    </nav>  
+</head>
+<body>
+  <div class="container">
+    <h2>Función <code>precio(producto)</code></h2>
+    <p>Esta función busca el precio de un producto dentro de un array de pares <b>[producto, precio]</b>.</p>
+
+    <label for="producto">Nombre del producto:</label>
+    <input type="text" id="producto" placeholder="Ejemplo: monitor">
+
+    <button id="run">Consultar precio</button>
+
+    <div id="output" class="result">Aquí aparecerá el resultado.</div>
+
+    <h3>Lista de precios:</h3>
+    <ul>
+      <li>monitor → 200 €</li>
+      <li>teclado → 20 €</li>
+      <li>ratón → 10 €</li>
+    </ul>
+
+    <h3>Código de la función:</h3>
+    <pre>
+function precio(nombre) {
+  var productos = [
+    ['monitor', 200],
+    ['teclado', 20],
+    ['ratón', 10]
+  ];
+
+  for (var i = 0; i < productos.length; i++) {
+    if (productos[i][0] === nombre) {
+      return productos[i][1];
+    }
+  }
+
+  return null; // si no se encuentra
+}
+    </pre>
+  </div>
+
+  <script>
+    function precio(nombre) {
+      var productos = [
+        ['monitor', 200],
+        ['teclado', 20],
+        ['ratón', 10]
+      ];
+
+      for (var i = 0; i < productos.length; i++) {
+        if (productos[i][0] === nombre) {
+          return productos[i][1];
+        }
+      }
+
+      return null; // si no se encuentra
+    }
+
+    document.getElementById('run').addEventListener('click', function() {
+      var nombre = document.getElementById('producto').value.trim().toLowerCase();
+      var salida = document.getElementById('output');
+
+      if (nombre.length === 0) {
+        salida.textContent = 'Por favor introduce un nombre de producto.';
+        salida.style.color = 'red';
+        return;
+      }
+
+      var resultado = precio(nombre);
+
+      if (resultado === null) {
+        salida.textContent = '❌ El producto "' + nombre + '" no se encuentra en la lista.';
+        salida.style.color = 'red';
+      } else {
+        salida.textContent = '💰 El precio de "' + nombre + '" es ' + resultado + ' €.';
+        salida.style.color = '#222';
+      }
+    });
+  </script>
+</body>
+</html>

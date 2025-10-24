@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Función esVocal(letra)</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f6f8fa; color: #222; padding: 40px; }
+    .container { max-width: 600px; margin: 0 auto; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    label { display: block; margin-top: 15px; font-weight: bold; }
+    input { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
+    button { margin-top: 15px; padding: 10px 16px; border: none; border-radius: 8px; background: #0078d7; color: white; font-size: 15px; cursor: pointer; }
+    button:hover { background: #005fa3; }
+    .result { margin-top: 20px; padding: 10px; border-radius: 8px; background: #eef3ff; border: 1px dashed #b6c8ff; }
+    pre { background: #222; color: #fff; padding: 10px; border-radius: 8px; overflow-x: auto; margin-top: 20px; }
+  </style>
+    <nav>
+        <a href="../PaginaNav.html">Volver al inicio</a>
+    </nav>  
+</head>
+<body>
+  <div class="container">
+    <h2>Función <code>esVocal(letra)</code></h2>
+    <p>Esta función devuelve <b>true</b> si la letra es una vocal (a, e, i, o, u), o <b>false</b> si no lo es. Funciona igual con mayúsculas y minúsculas.</p>
+
+    <label for="letra">Introduce una letra:</label>
+    <input type="text" id="letra" maxlength="1" placeholder="Ejemplo: A">
+
+    <button id="run">Comprobar</button>
+
+    <div id="output" class="result">Aquí aparecerá el resultado.</div>
+
+    <h3>Código de la función:</h3>
+    <pre>
+function esVocal(letra) {
+  var vocales = ['a', 'e', 'i', 'o', 'u'];
+  var l = letra.toLowerCase();
+
+  for (var i = 0; i < vocales.length; i++) {
+    if (l === vocales[i]) {
+      return true;
+    }
+  }
+  return false;
+}
+    </pre>
+  </div>
+
+  <script>
+    function esVocal(letra) {
+      var vocales = ['a', 'e', 'i', 'o', 'u'];
+      var l = letra.toLowerCase();
+
+      for (var i = 0; i < vocales.length; i++) {
+        if (l === vocales[i]) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    document.getElementById('run').addEventListener('click', function() {
+      var letra = document.getElementById('letra').value.trim();
+      var salida = document.getElementById('output');
+
+      if (letra.length !== 1 || !/[a-zA-Z]/.test(letra)) {
+        salida.textContent = 'Por favor introduce una sola letra (sin acentos ni símbolos).';
+        salida.style.color = 'red';
+        return;
+      }
+
+      var resultado = esVocal(letra);
+      salida.style.color = '#222';
+      salida.textContent = resultado
+        ? '✅ La letra "' + letra + '" es una VOCAL.'
+        : '❌ La letra "' + letra + '" NO es una vocal.';
+    });
+  </script>
+</body>
+</html>

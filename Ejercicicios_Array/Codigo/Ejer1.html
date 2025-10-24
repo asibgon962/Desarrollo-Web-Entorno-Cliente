@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selecciona el Día de la Semana</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    h1 {
+      color: #0066cc;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-size: 1.2em;
+      padding: 10px;
+      background-color: #e0e0e0;
+      border-radius: 5px;
+      display: none;
+    }
+    input[type="number"] {
+      padding: 8px;
+      font-size: 1.1em;
+      width: 50px;
+    }
+    button {
+      padding: 8px 15px;
+      font-size: 1.1em;
+      cursor: pointer;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #004d99;
+    }
+  </style>
+  <nav>
+    <a href="../PaginaNav.html">Volver al inicio</a>
+  </nav>
+</head>
+<body>
+  <h1>Selecciona un día de la semana</h1>
+  <p>Introduce un número del 0 al 6, donde 0 es Domingo y 6 es Sábado:</p>
+  
+  <input type="number" id="diaUsuario" min="0" max="6" placeholder="0-6">
+  <button onclick="mostrarDia()">Ver Día</button>
+    <!-- Con este input en el html, luego lo pasamos al js mendiante la referencia Id  -->
+  <div id="resultado"></div>
+
+  <script src="Ejer1.js"></script>
+</body>
+</html>
