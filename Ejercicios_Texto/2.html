@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contar letras en un texto</title>
+</head>
+<body>
+  <h1>Contar cuántas veces aparece una letra</h1>
+  
+  <label for="texto">Introduce un texto:</label>
+  <input type="text" id="texto" placeholder="Escribe una frase...">
+
+  <br><br>
+
+  <label for="letra">Letra a buscar:</label>
+  <input type="text" id="letra" maxlength="1" placeholder="Ej: a">
+
+  <br><br>
+
+  <button onclick="contarLetra()">Contar</button>
+
+  <p><strong>Resultado:</strong> <span id="resultado"></span></p>
+
+  <script src="2.js"></script>
+</body>
+</html>

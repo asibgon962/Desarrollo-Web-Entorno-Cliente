@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reemplazar palabra</title>
+</head>
+<body>
+  <h1>Reemplazar palabra en una frase</h1>
+
+  <label for="frase">Introduce una frase:</label>
+  <input type="text" id="frase" placeholder="Escribe algo...">
+
+  <br><br>
+
+  <label for="palabraAntigua">Palabra a reemplazar:</label>
+  <input type="text" id="palabraAntigua" placeholder="Palabra antigua">
+
+  <br><br>
+
+  <label for="palabraNueva">Nueva palabra:</label>
+  <input type="text" id="palabraNueva" placeholder="Palabra nueva">
+
+  <br><br>
+
+  <button onclick="reemplazar()">Reemplazar</button>
+
+  <p><strong>Resultado:</strong> <span id="resultado"></span></p>
+
+  <script src="5.js"></script>
+</body>
+</html>
