@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Registro — Ejercicio 2</title>
+<style>
+  body { font-family: Arial, sans-serif; padding:20px; max-width:700px; }
+  label { display:block; margin-top:12px; }
+  input[type="text"], input[type="password"], select { width:100%; padding:8px; box-sizing:border-box; }
+  .error { color:#c00; font-size:0.95em; margin-top:4px; }
+</style>
+</head>
+<body>
+
+<h1>Registro - Provincia de Cádiz</h1>
+<form id="form2" action="grabar.php" method="post" novalidate>
+  <div>
+    <label for="user">Nombre de usuario</label>
+    <input id="user" name="user" type="text" />
+    <div id="err-user" class="error" aria-live="polite"></div>
+  </div>
+
+  <div>
+    <label for="pwd">Contraseña</label>
+    <input id="pwd" name="pwd" type="password" />
+    <div id="err-pwd" class="error" aria-live="polite"></div>
+  </div>
+
+  <div>
+    <label for="pob">Población</label>
+    <select id="pob" name="pob">
+      <option value="">– Seleccione –</option>
+      <!-- Ejemplo de lista (sustituir/expandir por la lista completa y ordenada alfabéticamente) -->
+      <option value="Algeciras">Algeciras</option>
+      <option value="Arcos de la Frontera">Arcos de la Frontera</option>
+      <option value="Barbate">Barbate</option>
+      <option value="Benalup-Casas Viejas">Benalup-Casas Viejas</option>
+      <option value="Bornos">Bornos</option>
+      <option value="Cádiz">Cádiz</option>
+      <option value="Chiclana de la Frontera">Chiclana de la Frontera</option>
+      <option value="Chipiona">Chipiona</option>
+      <option value="Conil de la Frontera">Conil de la Frontera</option>
+      <option value="El Puerto de Santa María">El Puerto de Santa María</option>
+      <option value="Jerez de la Frontera">Jerez de la Frontera</option>
+      <option value="Medina Sidonia">Medina Sidonia</option>
+      <option value="Puerto Real">Puerto Real</option>
+      <option value="San Fernando">San Fernando</option>
+      <option value="Sanlúcar de Barrameda">Sanlúcar de Barrameda</option>
+      <option value="Tarifa">Tarifa</option>
+      <option value="Vejer de la Frontera">Vejer de la Frontera</option>
+      <!-- FIN ejemplo -->
+    </select>
+    <div id="err-pob" class="error" aria-live="polite"></div>
+  </div>
+
+  <div style="margin-top:14px;">
+    <button type="submit">Enviar registro</button>
+  </div>
+</form>
+
+<script>
+(function(){
+  const form = document.getElementById('form2');
+  const user = document.getElementById('user');
+  const pwd = document.getElementById('pwd');
+  const pob = document.getElementById('pob');
+
+  const err = {
+    user: document.getElementById('err-user'),
+    pwd: document.getElementById('err-pwd'),
+    pob: document.getElementById('err-pob')
+  };
+
+  // Validaciones
+  function validateUser() {
+    const v = user.value;
+    if (v.length < 8) {
+      err.user.textContent = 'El dato Nombre de usuario debe tener al menos 8 caracteres.';
+      user.focus();
+      return false;
+    }
+    if (/\s/.test(v)) {
+      err.user.textContent = 'El dato Nombre de usuario no debe contener espacios en blanco.';
+      user.focus();
+      return false;
+    }
+    err.user.textContent = '';
+    return true;
+  }
+
+  function validatePwd() {
+    const v = pwd.value;
+    // 6-10 caracteres alfanuméricos
+    if (!/^[A-Za-z0-9]{6,10}$/.test(v)) {
+      err.pwd.textContent = 'El dato Contraseña debe tener entre 6 y 10 caracteres alfanuméricos.';
+      pwd.focus();
+      return false;
+    }
+    // al menos un dígito
+    if (!/\d/.test(v)) {
+      err.pwd.textContent = 'El dato Contraseña debe contener al menos un dígito.';
+      pwd.focus();
+      return false;
+    }
+    // al menos una mayúscula
+    if (!/[A-Z]/.test(v)) {
+      err.pwd.textContent = 'El dato Contraseña debe contener al menos una letra mayúscula.';
+      pwd.focus();
+      return false;
+    }
+    err.pwd.textContent = '';
+    return true;
+  }
+
+  function validatePob() {
+    if (!pob.value) {
+      err.pob.textContent = 'El dato Población debe ser seleccionado.';
+      pob.focus();
+      return false;
+    }
+    err.pob.textContent = '';
+    return true;
+  }
+
+  // eventos blur para validación individual
+  user.addEventListener('blur', validateUser);
+  pwd.addEventListener('blur', validatePwd);
+  pob.addEventListener('change', validatePob);
+
+  form.addEventListener('submit', function(e){
+    // validar en el submit antes de enviar
+    if (!validateUser() || !validatePwd() || !validatePob()) {
+      e.preventDefault(); // no enviar si hay error
+    } else {
+      // si todo ok, el formulario se enviará vía POST a grabar.php (action arriba)
+      // No hacemos e.preventDefault() para que se envíe realmente.
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
