@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Ejercicio 2 — Div editable</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; padding:16px; }
+    #editable { padding:8px; border:1px dashed #aaa; min-height:40px; cursor:pointer; }
+    textarea { font: inherit; padding:8px; box-sizing:border-box; }
+  </style>
+</head>
+<body>
+
+  <h1>Ejercicio 2 — Div editable</h1>
+  <div id="editable">
+    <b>Contenido</b> <i>editable</i>. Puedes poner <span style="color:green">&lt;em&gt;HTML&lt;/em&gt;</span> aquí.
+  </div>
+
+  <script>
+    const div = document.getElementById("editable");
+
+    function convertir(div) {
+      const ta = document.createElement("textarea");
+      ta.value = div.innerHTML;
+      ta.style.width = div.offsetWidth + "px";
+      ta.style.height = div.offsetHeight + "px";
+
+      div.replaceWith(ta);
+      ta.focus();
+
+      ta.addEventListener("keydown", e => {
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault();
+          ta.blur();
+        }
+      });
+
+      ta.addEventListener("blur", () => {
+        const nuevoDiv = document.createElement("div");
+        nuevoDiv.id = "editable";
+        nuevoDiv.style.padding = "8px";
+        nuevoDiv.style.border = "1px dashed #aaa";
+        nuevoDiv.innerHTML = ta.value;
+        ta.replaceWith(nuevoDiv);
+        nuevoDiv.addEventListener("click", () => convertir(nuevoDiv));
+      });
+    }
+
+    div.addEventListener("click", () => convertir(div));
+  </script>
+
+</body>
+</html>

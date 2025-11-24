@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Ejercicio 4 — Ratón</title>
+  <style>
+    body { font-family: monospace; padding:16px; }
+  </style>
+</head>
+<body>
+
+<h1>Ejercicio 4 — Ratón con teclado</h1>
+<p>Haz clic y usa flechas. Escape para salir.</p>
+
+<pre id="mouse" tabindex="0">
+    ᘛ⁐̤ᕐᐷ
+</pre>
+
+<script>
+  const mouse = document.getElementById("mouse");
+  let activo = false;
+  const paso = 10;
+
+  mouse.addEventListener("click", () => {
+    const r = mouse.getBoundingClientRect();
+    mouse.style.position = "fixed";
+    mouse.style.left = r.left + "px";
+    mouse.style.top = r.top + "px";
+    activo = true;
+    mouse.focus();
+  });
+
+  mouse.addEventListener("keydown", e => {
+    if (!activo) return;
+
+    let x = parseInt(mouse.style.left);
+    let y = parseInt(mouse.style.top);
+
+    if (e.key === "ArrowLeft") mouse.style.left = x - paso + "px";
+    if (e.key === "ArrowRight") mouse.style.left = x + paso + "px";
+    if (e.key === "ArrowUp") mouse.style.top = y - paso + "px";
+    if (e.key === "ArrowDown") mouse.style.top = y + paso + "px";
+
+    if (e.key === "Escape") {
+      activo = false;
+      mouse.style.position = "";
+      mouse.style.left = "";
+      mouse.style.top = "";
+    }
+  });
+</script>
+
+</body>
+</html>

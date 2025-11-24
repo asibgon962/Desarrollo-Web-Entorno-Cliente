@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Ejercicio 1 — Select</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; padding:16px; }
+    button { padding:6px 10px; }
+  </style>
+</head>
+<body>
+  <h1>Ejercicio 1 — Select</h1>
+  <p>Haz clic en el botón: mostrará el value/text del option seleccionado, añadirá <code>&lt;option value="classic"&gt;Classic&lt;/option&gt;</code> y lo seleccionará.</p>
+  
+  <select id="genres">
+    <option value="rock">Rock</option>
+    <option value="blues" selected>Blues</option>
+  </select>
+
+  <button id="run">Ejecutar</button>
+
+  <script>
+    const btn = document.getElementById('run');
+    const sel = document.getElementById('genres');
+
+    btn.addEventListener('click', () => {
+      const opt = sel.options[sel.selectedIndex];
+      alert(opt.value);
+
+      const newOpt = document.createElement('option');
+      newOpt.value = 'classic';
+      newOpt.text = 'Classic';
+      sel.appendChild(newOpt);
+
+      sel.value = 'classic';
+    });
+  </script>
+</body>
+</html>

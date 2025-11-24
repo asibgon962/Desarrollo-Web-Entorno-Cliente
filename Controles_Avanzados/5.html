@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Ejercicio 5 — Calculadora</title>
+  <style>
+    body { font-family: system-ui; padding:16px; }
+    input { margin-right:10px; width:120px; }
+    .res { font-weight:bold; }
+  </style>
+</head>
+<body>
+
+<h1>Ejercicio 5 — Calculadora de depósito</h1>
+
+Inicial:
+<input id="inicial" type="number" value="1000"><br><br>
+
+Interés (%):
+<input id="interes" type="number" value="5"><br><br>
+
+Años:
+<input id="anos" type="number" value="3"><br><br>
+
+<div class="res" id="resultado"></div>
+
+<script>
+  const ini = document.getElementById("inicial");
+  const int = document.getElementById("interes");
+  const anos = document.getElementById("anos");
+  const out = document.getElementById("resultado");
+
+  function calcular() {
+    const capital = parseFloat(ini.value) || 0;
+    const interes = (parseFloat(int.value) || 0) / 100;
+    const t = parseFloat(anos.value) || 0;
+
+    const total = Math.round(capital * Math.pow(1 + interes, t));
+    out.textContent = "Resultado: " + total;
+  }
+
+  ini.oninput = int.oninput = anos.oninput = calcular;
+  calcular();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Ejercicio 3 — Editar celdas</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; padding:16px; }
+    table { border-collapse: collapse; width:100%; }
+    td, th { border:1px solid #bbb; padding:8px; min-width:100px; }
+    .controls { margin-top:6px; }
+    button { padding:3px 6px; }
+  </style>
+</head>
+<body>
+
+<h1>Ejercicio 3 — Edición de celdas</h1>
+
+<table id="tabla">
+  <tr><th>Nombre</th><th>Edad</th><th>Nota</th></tr>
+  <tr><td>María <b>Gómez</b></td><td>28</td><td>&lt;strong&gt;A&lt;/strong&gt;</td></tr>
+  <tr><td>Juan</td><td>35</td><td>&lt;i&gt;B+&lt;/i&gt;</td></tr>
+</table>
+
+<script>
+  const tabla = document.getElementById("tabla");
+  let celdaEditando = null;
+  let contenidoOriginal = "";
+
+  tabla.addEventListener("click", e => {
+    const td = e.target.closest("td");
+    if (!td || celdaEditando) return;
+
+    celdaEditando = td;
+    contenidoOriginal = td.innerHTML;
+
+    const ta = document.createElement("textarea");
+    ta.value = contenidoOriginal;
+    ta.style.width = td.offsetWidth + "px";
+    ta.style.height = td.offsetHeight + "px";
+
+    td.innerHTML = "";
+    td.appendChild(ta);
+    ta.focus();
+
+    const controls = document.createElement("div");
+    controls.className = "controls";
+    controls.innerHTML = `
+      <button id="ok">OK</button>
+      <button id="cancel">CANCEL</button>
+    `;
+    td.appendChild(controls);
+
+    controls.querySelector("#ok").onclick = () => {
+      td.innerHTML = ta.value;
+      celdaEditando = null;
+    };
+
+    controls.querySelector("#cancel").onclick = () => {
+      td.innerHTML = contenidoOriginal;
+      celdaEditando = null;
+    };
+  });
+</script>
+
+</body>
+</html>
