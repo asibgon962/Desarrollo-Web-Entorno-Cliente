@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Ejercicio 9</title>
+  <style>
+    #boton { position: fixed; right: 20px; bottom: 20px; display: none; padding:8px 12px; border:1px solid #333; background:#fff; }
+    body { height: 200vh; margin:0; padding:20px; }
+  </style>
+</head>
+<body>
+  Primera linea o cabecera
+  <div id="boton">Boton</div>
+
+  <script>
+    window.addEventListener('scroll', function() {
+      var btn = document.getElementById('boton');
+      // Si la línea superior del documento deja de verse => scrollY > 0
+      if (window.scrollY > 0) {
+        btn.style.display = 'block';
+      } else {
+        btn.style.display = 'none';
+      }
+    });
+    // Comprobar estado inicial
+    if (window.scrollY > 0) document.getElementById('boton').style.display = 'block';
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Ejercicio 5</title>
+  <style>.boton{display:block;width:100px;cursor:pointer;margin:10px;border:1px solid black;padding:8px;text-align:center;}</style>
+</head>
+<body>
+  <div id="boton1" class="boton">Pulsar aquí</div>
+  <div id="boton2" class="boton">Pulsar aquí</div>
+
+  <script>
+    function pulsar(event) {
+      // currentTarget siempre referencia el elemento al que se añadió el listener
+      alert('Has pulsado el botón con id: ' + event.currentTarget.id);
+    }
+
+    document.getElementById('boton1').addEventListener('click', pulsar);
+    document.getElementById('boton2').addEventListener('click', pulsar);
+  </script>
+</body>
+</html>

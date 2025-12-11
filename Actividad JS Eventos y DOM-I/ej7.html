@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Ejercicio 7</title>
+  <style>div{width:100px;height:100px;display:inline-block;margin-right:8px;}</style>
+</head>
+<body>
+  <div id="c1" style="background:red"></div>
+  <div id="c2" style="background:white"></div>
+  <div id="c3" style="background:blue"></div>
+
+  <script>
+    var c1 = document.getElementById('c1');
+    var c2 = document.getElementById('c2');
+    var c3 = document.getElementById('c3');
+
+    c2.addEventListener('mouseenter', function(event) {
+      var origen = event.relatedTarget;
+      // comprobar si relatedTarget es exactamente c1 o c3, o si contiene dichos elementos (por si entra desde un hijo)
+      if (origen && (origen === c1 || c1.contains(origen))) {
+        c2.style.background = 'red';
+      } else if (origen && (origen === c3 || c3.contains(origen))) {
+        c2.style.background = 'blue';
+      } else {
+        c2.style.background = 'white';
+      }
+    });
+
+    // opcional: al salir recuperar blanco si quieres
+    c2.addEventListener('mouseleave', function() {
+      // c2.style.background = 'white';
+    });
+  </script>
+</body>
+</html>

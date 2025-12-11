@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Ej 2</title></head>
+<body>
+  <div id="pasar" style="padding:12px;border:1px solid #333;display:inline-block;cursor:pointer;">
+    Pasa por aquí
+  </div>
+
+  <div id="efecto" style="padding:12px;border:1px solid #333;display:inline-block;margin-left:10px;">
+    Efectos del movimiento
+  </div>
+
+  <script>
+    var origen = document.getElementById('pasar');
+    var destino = document.getElementById('efecto');
+
+    origen.addEventListener('mouseover', function() {
+      destino.style.backgroundColor = 'green';
+    });
+    // opcional: al salir devolver al color original
+    origen.addEventListener('mouseout', function() {
+      destino.style.backgroundColor = '';
+    });
+  </script>
+</body>
+</html>

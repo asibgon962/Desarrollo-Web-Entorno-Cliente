@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Ejercicio 3</title>
+</head>
+<body>
+  <form>
+    <input id="precio" type="number" placeholder="Precio">
+    <input id="cantidad" type="number" placeholder="Cantidad">
+    <input type="button" id="enviar" value="Calcular">
+    <input id="total" readonly placeholder="Total">
+  </form>
+
+  <script>
+    // Colocado al final del body (según la consigna)
+    document.getElementById('enviar').addEventListener('click', function() {
+      var p = parseFloat(document.getElementById('precio').value) || 0;
+      var c = parseFloat(document.getElementById('cantidad').value) || 0;
+      document.getElementById('total').value = p * c;
+    });
+  </script>
+</body>
+</html>

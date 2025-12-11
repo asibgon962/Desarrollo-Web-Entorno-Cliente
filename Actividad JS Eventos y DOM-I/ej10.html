@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Ej 10</title></head>
+<body>
+  <form>
+    <label>No se aceptan dígitos</label>
+    <input type="text" id="letras" autocomplete="off">
+  </form>
+
+  <script>
+    var input = document.getElementById('letras');
+
+    input.addEventListener('keydown', function(e) {
+      // Evitar los dígitos (incluye teclado numérico)
+      if (e.key >= '0' && e.key <= '9') e.preventDefault();
+    });
+
+    // Evitar pegado con dígitos
+    input.addEventListener('paste', function(e) {
+      var texto = (e.clipboardData || window.clipboardData).getData('text');
+      if (/\d/.test(texto)) e.preventDefault();
+    });
+
+    // Opcional: filtrar en input (para navegadores/acciones extra)
+    input.addEventListener('input', function() {
+      // quitar dígitos que puedan haberse colado
+      this.value = this.value.replace(/\d/g, '');
+    });
+  </script>
+</body>
+</html>

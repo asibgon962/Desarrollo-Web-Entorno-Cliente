@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Ejercicio 8</title>
+  <style>
+    .oculto { display: none; }
+    .visible { display: block; }
+  </style>
+</head>
+<body>
+  <div class="oculto" id="ficha1">Hola, soy el bloque 1</div>
+  <div class="oculto" id="ficha2">Hola, soy el bloque 2</div>
+  <div class="oculto" id="ficha3">Hola, soy el bloque 3</div>
+
+  <script>
+    document.addEventListener('keydown', function(e) {
+      // ocultar todas
+      ['ficha1','ficha2','ficha3'].forEach(function(id){
+        document.getElementById(id).classList.remove('visible');
+        document.getElementById(id).classList.add('oculto');
+      });
+
+      if (e.key === '1' || e.key === '2' || e.key === '3') {
+        var el = document.getElementById('ficha' + e.key);
+        el.classList.remove('oculto');
+        el.classList.add('visible');
+      }
+    });
+  </script>
+</body>
+</html>

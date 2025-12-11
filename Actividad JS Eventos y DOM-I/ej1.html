@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Ejercicio 1 (con script)</title>
+</head>
+<body>
+  <div id="miBoton"
+       style="padding:12px; border:1px solid #333; display:inline-block; cursor:pointer; user-select:none;">
+    Pulsa aquí
+  </div>
+
+  <script>
+    // añadimos el manejador mediante script (addEventListener)
+    document.getElementById('miBoton').addEventListener('click', function() {
+      alert('Pulsaste sobre el botón');
+    });
+  </script>
+</body>
+</html>
