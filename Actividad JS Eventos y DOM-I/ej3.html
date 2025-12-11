@@ -1,0 +1,15 @@
+<!DOCTYPE html><html><body>
+<form>
+<input id="precio" type="number">
+<input id="cantidad" type="number">
+<input type="button" id="enviar" value="Calcular">
+<input id="total" readonly>
+</form>
+<script>
+document.getElementById('enviar').addEventListener('click',()=>{
+ let p=parseFloat(document.getElementById('precio').value)||0;
+ let c=parseFloat(document.getElementById('cantidad').value)||0;
+ document.getElementById('total').value=p*c;
+});
+</script>
+</body></html>

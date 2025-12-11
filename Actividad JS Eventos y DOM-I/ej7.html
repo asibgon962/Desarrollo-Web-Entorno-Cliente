@@ -1,0 +1,18 @@
+<!DOCTYPE html><html><head>
+<style>div{width:100px;height:100px;display:inline-block}</style>
+</head><body>
+<div id="c1" style="background:red"></div>
+<div id="c2" style="background:white"></div>
+<div id="c3" style="background:blue"></div>
+<script>
+let c1=document.getElementById('c1');
+let c2=document.getElementById('c2');
+let c3=document.getElementById('c3');
+c2.onmouseenter=(e)=>{
+ let from=e.relatedTarget;
+ if(from===c1) c2.style.background='red';
+ else if(from===c3) c2.style.background='blue';
+ else c2.style.background='white';
+};
+</script>
+</body></html>

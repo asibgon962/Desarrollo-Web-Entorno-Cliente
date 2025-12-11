@@ -1,0 +1,10 @@
+<!DOCTYPE html><html><body>
+<label>Coordenada X</label><input id="cX">
+<label>Coordenada Y</label><input id="cY">
+<script>
+document.onmousemove=(e)=>{
+ document.getElementById('cX').value=e.screenX;
+ document.getElementById('cY').value=e.screenY;
+};
+</script>
+</body></html>

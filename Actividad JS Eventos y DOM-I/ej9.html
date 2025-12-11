@@ -1,0 +1,13 @@
+<!DOCTYPE html><html><head>
+<style>#boton{position:fixed;bottom:0;display:none;border:1px solid black} body{height:200vh}</style>
+</head><body>
+Primera linea o cabecera
+<div id="boton">Boton</div>
+<script>
+window.onscroll=()=>{
+ let btn=document.getElementById('boton');
+ if(window.scrollY>0) btn.style.display='block';
+ else btn.style.display='none';
+};
+</script>
+</body></html>
