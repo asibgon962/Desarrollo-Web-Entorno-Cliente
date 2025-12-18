@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Compras</title>
+</head>
+<body>
+
+<input type="text" id="newItemInput" placeholder="Nuevo ítem">
+<button id="addItemBtn">Agregar</button>
+<ul id="itemsList"></ul>
+
+<script>
+const input = document.getElementById("newItemInput");
+const button = document.getElementById("addItemBtn");
+const list = document.getElementById("itemsList");
+
+button.addEventListener("click", () => {
+  if (input.value === "") return;
+
+  const li = document.createElement("li");
+  li.textContent = input.value;
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "❌";
+  deleteBtn.onclick = () => li.remove();
+
+  li.appendChild(deleteBtn);
+  list.appendChild(li);
+
+  input.value = "";
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mostrar / Ocultar</title>
+</head>
+<body>
+
+<div id="box" style="width:100px;height:100px;background:blue;"></div>
+<button id="toggleBtn">Ocultar Caja</button>
+
+<script>
+const box = document.getElementById("box");
+const btn = document.getElementById("toggleBtn");
+
+btn.addEventListener("click", () => {
+  if (box.style.display === "none") {
+    box.style.display = "block";
+    btn.textContent = "Ocultar Caja";
+  } else {
+    box.style.display = "none";
+    btn.textContent = "Mostrar Caja";
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Frases Informática</title>
+<style>
+#contenido-informatica {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+#texto-informatica {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+#ver-mas-boton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<div id="contenido-informatica">
+  <p id="texto-informatica">Algoritmo - frase utilizada por los programadores...</p>
+  <button id="ver-mas-boton">Ver más contenido</button>
+</div>
+
+<script>
+const frasesFrikisInformatica = [
+  "Programar es pensar, no escribir código.",
+  "Sin café no hay código.",
+  "Eso funciona en mi ordenador.",
+  "Un bug más y me hago poeta.",
+  "404 motivación not found"
+];
+
+document.getElementById("ver-mas-boton").addEventListener("click", () => {
+  const random = Math.floor(Math.random() * frasesFrikisInformatica.length);
+  document.getElementById("texto-informatica").textContent = frasesFrikisInformatica[random];
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Tareas</title>
+</head>
+<body>
+
+<input type="text" id="newTaskInput" placeholder="Nueva tarea">
+<button id="addTaskBtn">Agregar tarea</button>
+<ul id="taskList"></ul>
+
+<script>
+const input = document.getElementById("newTaskInput");
+const btn = document.getElementById("addTaskBtn");
+const list = document.getElementById("taskList");
+
+btn.addEventListener("click", () => {
+  if (input.value === "") return;
+
+  const li = document.createElement("li");
+  li.textContent = input.value;
+
+  const del = document.createElement("button");
+  del.textContent = "X";
+  del.onclick = () => li.remove();
+
+  li.appendChild(del);
+  list.appendChild(li);
+  input.value = "";
+});
+</script>
+
+</body>
+</html>

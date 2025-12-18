@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Frases con colores</title>
+</head>
+<body>
+
+<p id="texto">Pulsa el botón</p>
+<button id="btn">Cambiar</button>
+
+<script>
+const frases = [
+  "Hola mundo",
+  "JavaScript es vida",
+  "CSS también cuenta",
+  "HTML no es un lenguaje de programación"
+];
+
+const colores = ["red", "blue", "green", "purple", "orange"];
+
+document.getElementById("btn").addEventListener("click", () => {
+  const fraseRandom = frases[Math.floor(Math.random() * frases.length)];
+  const colorRandom = colores[Math.floor(Math.random() * colores.length)];
+
+  document.getElementById("texto").textContent = fraseRandom;
+  document.getElementById("texto").style.color = colorRandom;
+  document.getElementById("btn").style.backgroundColor = colorRandom;
+});
+</script>
+
+</body>
+</html>

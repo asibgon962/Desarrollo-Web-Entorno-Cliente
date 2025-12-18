@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Selección Aleatoria</title>
+</head>
+<body>
+
+<input type="text" id="inputName" placeholder="Nombre">
+<button id="addBtn">Agregar</button>
+<ul id="nameList"></ul>
+<button id="randomBtn">Seleccionar aleatoriamente</button>
+
+<script>
+const names = [];
+const input = document.getElementById("inputName");
+const list = document.getElementById("nameList");
+
+document.getElementById("addBtn").onclick = () => {
+  if (input.value === "") return;
+  names.push(input.value);
+  render();
+  input.value = "";
+};
+
+document.getElementById("randomBtn").onclick = () => {
+  const items = document.querySelectorAll("li");
+  items.forEach(li => li.style.background = "");
+
+  const random = Math.floor(Math.random() * items.length);
+  items[random].style.background = "yellow";
+  alert("Seleccionado: " + items[random].textContent);
+};
+
+function render() {
+  list.innerHTML = "";
+  names.forEach(name => {
+    const li = document.createElement("li");
+    li.textContent = name;
+    list.appendChild(li);
+  });
+}
+</script>
+
+</body>
+</html>
