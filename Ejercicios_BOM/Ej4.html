@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ejercicio Screen</title>
+</head>
+<body>
+<h2>Información de la pantalla</h2>
+<div id="pantalla"></div>
+
+<script>
+let texto = `
+Tamaño de pantalla: ${screen.width}x${screen.height} <br>
+Tamaño disponible: ${screen.availWidth}x${screen.availHeight} <br>
+Profundidad de color: ${screen.colorDepth} <br>
+Resolución de color: ${screen.pixelDepth}
+`;
+document.getElementById("pantalla").innerHTML = texto;
+</script>
+</body>
+</html>

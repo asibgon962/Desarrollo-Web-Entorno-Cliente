@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ejercicio Location</title>
+</head>
+<body>
+<h2>Información de la URL</h2>
+<div id="location"></div>
+
+<button onclick="nuevoDocumento()">Carga un nuevo documento</button>
+<button onclick="recarga()">Recarga la página</button>
+<button onclick="sustituye()">Sustituye la página</button>
+
+<script>
+let texto = `
+href: ${location.href} <br>
+hostname: ${location.hostname} <br>
+pathname: ${location.pathname} <br>
+protocol: ${location.protocol} <br>
+hash: ${location.hash} <br>
+host: ${location.host} <br>
+origin: ${location.origin} <br>
+search: ${location.search}
+`;
+document.getElementById("location").innerHTML = texto;
+
+function nuevoDocumento() {
+    location.assign("https://www.example.com");
+}
+
+function recarga() {
+    location.reload();
+}
+
+function sustituye() {
+    location.replace("https://www.example.com");
+}
+</script>
+</body>
+</html>

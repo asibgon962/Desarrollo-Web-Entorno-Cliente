@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ejercicio Navigator</title>
+</head>
+<body>
+<h2>Información del navegador</h2>
+<div id="navigator"></div>
+<button onclick="mostrarJava()">Ver si Java está activado</button>
+
+<script>
+let texto = `
+appCodeName: ${navigator.appCodeName} <br>
+appName: ${navigator.appName} <br>
+appVersion: ${navigator.appVersion} <br>
+product: ${navigator.product} <br>
+platform: ${navigator.platform} <br>
+onLine: ${navigator.onLine} <br>
+language: ${navigator.language} <br>
+cookieEnabled: ${navigator.cookieEnabled} <br>
+userAgent: ${navigator.userAgent} <br>
+geolocation: ${navigator.geolocation ? "Disponible" : "No disponible"}
+`;
+document.getElementById("navigator").innerHTML = texto;
+
+function mostrarJava() {
+    alert("Java activado: " + navigator.javaEnabled());
+}
+</script>
+</body>
+</html>

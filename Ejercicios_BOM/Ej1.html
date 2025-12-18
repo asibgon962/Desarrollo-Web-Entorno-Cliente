@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ejercicio History</title>
+</head>
+<body>
+<h2>Historial del navegador</h2>
+<div id="history"></div>
+
+<button onclick="atras()">Atrás</button>
+<button onclick="adelante()">Adelante</button>
+<button onclick="irAPagina()">Ir a una página específica (-1)</button>
+
+<script>
+let texto = `
+Número de URLs en el historial: ${history.length}
+`;
+document.getElementById("history").innerHTML = texto;
+
+function atras() {
+    history.back();
+}
+
+function adelante() {
+    history.forward();
+}
+
+function irAPagina() {
+    history.go(-1); // Retrocede una página
+}
+</script>
+</body>
+</html>

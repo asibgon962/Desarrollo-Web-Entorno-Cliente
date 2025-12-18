@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ejercicio Tiempo</title>
+</head>
+<body>
+<h2>Reloj en tiempo real</h2>
+<div id="reloj"></div>
+
+<button onclick="saludoTimeout()">Saludar en 3 segundos</button>
+<button onclick="guardarSaludo()">Guardar saludo 3s</button>
+<button onclick="cancelarSaludo()">Cancelar saludo</button>
+<button onclick="detenerReloj()">Detener reloj</button>
+
+<script>
+let intervalo;
+let timeoutSaludo;
+
+function actualizarReloj() {
+    let ahora = new Date();
+    document.getElementById("reloj").innerHTML = ahora.toLocaleTimeString();
+}
+
+// iniciar reloj
+intervalo = setInterval(actualizarReloj, 1000);
+
+// saludo simple
+function saludar() {
+    alert("¡Hola!");
+}
+
+function saludoTimeout() {
+    setTimeout(saludar, 3000);
+}
+
+function guardarSaludo() {
+    timeoutSaludo = setTimeout(saludar, 3000);
+}
+
+function cancelarSaludo() {
+    clearTimeout(timeoutSaludo);
+}
+
+function detenerReloj() {
+    clearInterval(intervalo);
+}
+</script>
+</body>
+</html>

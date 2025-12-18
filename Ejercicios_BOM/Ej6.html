@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ejercicio Window</title>
+</head>
+<body>
+<h2>Propiedades básicas de la ventana</h2>
+<div id="ventana"></div>
+<h2>Otras propiedades de la ventana</h2>
+<div id="otrasPropiedades"></div>
+
+<button onclick="crearVentana()">Crear ventana</button>
+<button onclick="cerrarVentana()">Cerrar ventana</button>
+<button onclick="redimensionarVentana()">Redimensionar ventana</button>
+<button onclick="moverVentana()">Mover ventana</button>
+<button onclick="enfocar()">Enfocar ventana</button>
+<button onclick="imprimir()">Imprimir ventana</button>
+
+<script>
+let miVentana;
+
+let texto = `
+Nombre de ventana: ${window.name} <br>
+Ancho externo: ${window.outerWidth} <br>
+Alto externo: ${window.outerHeight} <br>
+Ancho interno: ${window.innerWidth} <br>
+Alto interno: ${window.innerHeight} <br>
+Scroll horizontal: ${window.pageXOffset} <br>
+Scroll vertical: ${window.pageYOffset} <br>
+Distancia izquierda: ${window.screenX} <br>
+Distancia arriba: ${window.screenY}
+`;
+document.getElementById("ventana").innerHTML = texto;
+
+let otras = `
+Frames: ${window.frames.length} <br>
+Frame actual: ${window.frameElement ? "Dentro de un iframe" : "No dentro de iframe"} <br>
+Ventana cerrada: ${window.closed} <br>
+Ventana padre: ${window.parent} <br>
+Ventana actual: ${window.self} <br>
+Ventana que abrió: ${window.opener}
+`;
+document.getElementById("otrasPropiedades").innerHTML = otras;
+
+function crearVentana(){
+    miVentana = window.open("", "", "width=500,height=200");
+    miVentana.document.write("<h1>Mi ventana</h1>");
+}
+function cerrarVentana(){ if(miVentana) miVentana.close(); }
+function redimensionarVentana(){ if(miVentana) miVentana.resizeBy(10,10); }
+function moverVentana(){ if(miVentana) miVentana.moveBy(10,10); }
+function enfocar(){ if(miVentana) miVentana.focus(); }
+function imprimir(){ if(miVentana) miVentana.print(); }
+</script>
+</body>
+</html>
