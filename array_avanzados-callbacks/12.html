@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 12 - filter + reduce</title>
+</head>
+<body>
+  <h1>Ejercicio 12 - filter + reduce</h1>
+  <p>Suma de pedidos pagados.</p>
+
+  <script>
+    const pedidos = [
+      { cliente: "Ana", total: 40, estado: "pagado" },
+      { cliente: "Luis", total: 30, estado: "pendiente" },
+      { cliente: "Sofía", total: 25, estado: "pagado" }
+    ];
+
+    const totalPagado = pedidos
+      .filter(p => p.estado === "pagado")
+      .reduce((acc, p) => acc + p.total, 0);
+
+    console.log(totalPagado);
+  </script>
+</body>
+</html>

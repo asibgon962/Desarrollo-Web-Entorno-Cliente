@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 14 - map + reduce</title>
+</head>
+<body>
+  <h1>Ejercicio 14 - map + reduce</h1>
+  <p>Contar roles por usuario y total de roles.</p>
+
+  <script>
+    const usuarios = [
+      { id: 1, nombre: "Ana", roles: ["admin", "editor"] },
+      { id: 2, nombre: "Luis", roles: ["viewer"] }
+    ];
+
+    const numRolesPorUsuario = usuarios.map(u => u.roles.length);
+    const totalRoles = numRolesPorUsuario.reduce((acc, n) => acc + n, 0);
+
+    console.log(numRolesPorUsuario); 
+    console.log(totalRoles);
+  </script>
+</body>
+</html>

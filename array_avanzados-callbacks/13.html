@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 13 - reduce groupBy</title>
+</head>
+<body>
+  <h1>Ejercicio 13 - reduce (groupBy)</h1>
+  <p>Agrupar vegetales por categoría.</p>
+
+  <script>
+    const vegetales = [
+      { categoria: "fruta", nombre: "manzana" },
+      { categoria: "fruta", nombre: "pera" },
+      { categoria: "verdura", nombre: "lechuga" }
+    ];
+
+    const agrupado = vegetales.reduce((acc, item) => {
+      if (!acc[item.categoria]) acc[item.categoria] = [];
+      acc[item.categoria].push(item.nombre);
+      return acc;
+    }, {});
+
+    console.log(agrupado);
+  </script>
+</body>
+</html>

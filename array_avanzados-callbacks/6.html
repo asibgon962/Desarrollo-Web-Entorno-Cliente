@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 6 - filter + map</title>
+</head>
+<body>
+  <h1>Ejercicio 6 - filter + map</h1>
+  <p>Filtrar productos con precio menor a 50 y obtener solo nombres.</p>
+
+  <script>
+    const productos = [
+      { nombre: "Mouse", precio: 20 },
+      { nombre: "Teclado", precio: 55 },
+      { nombre: "USB", precio: 15 }
+    ];
+
+    const baratos = productos
+      .filter(p => p.precio < 50)
+      .map(p => p.nombre);
+
+    console.log(baratos);
+  </script>
+</body>
+</html>

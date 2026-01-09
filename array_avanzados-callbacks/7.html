@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 7 - reduce</title>
+</head>
+<body>
+  <h1>Ejercicio 7 - reduce</h1>
+  <p>Contar frecuencia de palabras.</p>
+
+  <script>
+    const palabras = ["sol", "luna", "sol", "mar", "luna", "sol"];
+
+    const frecuencia = palabras.reduce((acc, palabra) => {
+      acc[palabra] = (acc[palabra] || 0) + 1;
+      return acc;
+    }, {});
+
+    console.log(frecuencia);
+  </script>
+</body>
+</html>

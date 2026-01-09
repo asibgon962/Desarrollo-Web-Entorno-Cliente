@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 8 - forEach</title>
+</head>
+<body>
+  <h1>Ejercicio 8 - forEach</h1>
+  <p>Convertir usuarios en un objeto {id: nombre}.</p>
+
+  <script>
+    const usuarios = [
+      { id: 1, nombre: "Ana" },
+      { id: 2, nombre: "Luis" }
+    ];
+
+    const usuariosObj = {};
+
+    usuarios.forEach(u => {
+      usuariosObj[u.id] = u.nombre;
+    });
+
+    console.log(usuariosObj);
+  </script>
+</body>
+</html>

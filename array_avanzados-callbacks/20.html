@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 20 - forEach + reduce</title>
+</head>
+<body>
+  <h1>Ejercicio 20 - forEach + reduce</h1>
+  <p>Contar logs por nivel.</p>
+
+  <script>
+    const logs = [
+      "INFO: Inicio del sistema",
+      "WARN: Poco espacio",
+      "ERROR: Falla crítica",
+      "INFO: Cargando"
+    ];
+
+    const parsed = [];
+
+    logs.forEach(linea => {
+      const [nivel] = linea.split(":");
+      parsed.push(nivel);
+    });
+
+    const conteo = parsed.reduce((acc, nivel) => {
+      acc[nivel] = (acc[nivel] || 0) + 1;
+      return acc;
+    }, {});
+
+    console.log(conteo);
+  </script>
+</body>
+</html>

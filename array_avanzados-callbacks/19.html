@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 19 - map + filter</title>
+</head>
+<body>
+  <h1>Ejercicio 19 - map + filter</h1>
+  <p>Normalizar y filtrar strings vacíos.</p>
+
+  <script>
+    const textos = ["  Hola ", "  ", " MUNDO", "  prueba  "];
+
+    const normalizados = textos
+      .map(t => t.trim().toLowerCase())
+      .filter(t => t !== "");
+
+    console.log(normalizados);
+  </script>
+</body>
+</html>

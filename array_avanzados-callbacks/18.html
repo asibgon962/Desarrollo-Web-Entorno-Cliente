@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 18 - reduce</title>
+</head>
+<body>
+  <h1>Ejercicio 18 - reduce</h1>
+  <p>Obtener la película con mayor rating.</p>
+
+  <script>
+    const peliculas = [
+      { titulo: "A", rating: 7 },
+      { titulo: "B", rating: 9 },
+      { titulo: "C", rating: 8 }
+    ];
+
+    const mejor = peliculas.reduce((acc, p) => {
+      return p.rating > acc.rating ? p : acc;
+    });
+
+    console.log(mejor);
+  </script>
+</body>
+</html>

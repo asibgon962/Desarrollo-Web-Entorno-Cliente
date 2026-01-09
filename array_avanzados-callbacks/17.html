@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 17 - filter + some</title>
+</head>
+<body>
+  <h1>Ejercicio 17 - filter + some</h1>
+  <p>Alumnos con al menos una nota por debajo de 5.</p>
+
+  <script>
+    const alumnos = [
+      { nombre: "Ana", notas: [7, 8, 9] },
+      { nombre: "Luis", notas: [4, 6, 5] },
+      { nombre: "Eva", notas: [3, 4, 2] }
+    ];
+
+    const resultado = alumnos.filter(a => 
+      a.notas.some(nota => nota < 5)
+    );
+
+    console.log(resultado);
+  </script>
+</body>
+</html>

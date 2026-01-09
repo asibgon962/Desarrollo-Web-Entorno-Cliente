@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 11 - reduce</title>
+</head>
+<body>
+  <h1>Ejercicio 11 - reduce</h1>
+  <p>Calcular balance de ingresos y gastos.</p>
+
+  <script>
+    const transacciones = [
+      { id: 1, tipo: "ingreso", cantidad: 100 },
+      { id: 2, tipo: "gasto", cantidad: 40 },
+      { id: 3, tipo: "ingreso", cantidad: 60 }
+    ];
+
+    const balance = transacciones.reduce((acc, t) => {
+      return t.tipo === "ingreso" ? acc + t.cantidad : acc - t.cantidad;
+    }, 0);
+
+    console.log(balance);
+  </script>
+</body>
+</html>

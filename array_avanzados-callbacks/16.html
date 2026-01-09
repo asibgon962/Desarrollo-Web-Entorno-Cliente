@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 16 - reduce</title>
+</head>
+<body>
+  <h1>Ejercicio 16 - reduce</h1>
+  <p>Obtener emails únicos en minúsculas.</p>
+
+  <script>
+    const emails = ["Ana@Gmail.com", "ana@gmail.com", "Luis@Hotmail.com"];
+
+    const unicos = emails.reduce((acc, email) => {
+      const e = email.toLowerCase();
+      if (!acc.includes(e)) acc.push(e);
+      return acc;
+    }, []);
+
+    console.log(unicos);
+  </script>
+</body>
+</html>

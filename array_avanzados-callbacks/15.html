@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 15 - some + filter</title>
+</head>
+<body>
+  <h1>Ejercicio 15 - some + filter</h1>
+  <p>Comprobar existencia de oferta y filtrar productos con ese tag.</p>
+
+  <script>
+    const productos = [
+      { nombre: "TV", tags: ["hogar"] },
+      { nombre: "Silla", tags: ["madera", "oferta"] },
+      { nombre: "Mesa", tags: ["comedor"] }
+    ];
+
+    const existeOferta = productos.some(p => p.tags.includes("oferta"));
+    const productosOferta = productos.filter(p => p.tags.includes("oferta"));
+
+    console.log(existeOferta);
+    console.log(productosOferta);
+  </script>
+</body>
+</html>

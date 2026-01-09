@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 10 - some + filter + reduce</title>
+</head>
+<body>
+  <h1>Ejercicio 10 - some + filter + reduce</h1>
+  <p>Comprobar negativos, filtrar positivos y sumar.</p>
+
+  <script>
+    const numeros = [5, -2, 8, 10, -1];
+
+    const hayNegativos = numeros.some(n => n < 0);
+    const positivos = numeros.filter(n => n > 0);
+    const sumaPositivos = positivos.reduce((acc, n) => acc + n, 0);
+
+    console.log(hayNegativos);
+    console.log(positivos);
+    console.log(sumaPositivos);
+  </script>
+</body>
+</html>

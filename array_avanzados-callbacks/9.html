@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 9 - map + callback</title>
+</head>
+<body>
+  <h1>Ejercicio 9 - map + callback</h1>
+  <p>Imprimir saludos usando función y map.</p>
+
+  <script>
+    function imprimirSaludos(nombres) {
+      nombres.forEach(nombre => console.log(`Hola, ${nombre}`));
+    }
+
+    const users = [
+      { id: 1, nombre: "Ana" },
+      { id: 2, nombre: "Mario" }
+    ];
+
+    const nombres = users.map(u => u.nombre);
+    imprimirSaludos(nombres);
+  </script>
+</body>
+</html>
