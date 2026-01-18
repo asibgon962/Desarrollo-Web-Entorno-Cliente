@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Datos del alumno</title>
+</head>
+<body>
+
+<h1 id="info">Datos del alumno</h1>
+
+<script>
+// JSON string dado
+let jsonStr = '{"nombre":"Mario","apellidos":"Sánchez López","nacido":"26-11-1986","curso":"DAW2","asignatura":"DEWC","ciudad":"El Puerto de Santa María"}';
+
+// 1. Convertir a objeto JS
+let alumno = JSON.parse(jsonStr);
+
+// 2. Convertir fecha a tipo Date
+let fecha = alumno.nacido.split("-");
+alumno.nacido = new Date(fecha[2], fecha[1] - 1, fecha[0]);
+
+// 3. Concatenar valores
+let textoFinal = "";
+for (let propiedad in alumno) {
+    textoFinal += alumno[propiedad] + " ";
+}
+
+// 4. Mostrar en la página
+document.getElementById("info").innerHTML = textoFinal;
+</script>
+
+</body>
+</html>

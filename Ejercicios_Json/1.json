@@ -1,0 +1,11 @@
+{
+  "numero_ejemplo": 42,
+  "cadena_ejemplo": "Hola mundo",
+  "booleano_ejemplo": true,
+  "matriz_1x5": [1, 2, 3, 4, 5],
+  "objeto_ejemplo": {
+    "descripcion": "Soy un objeto JSON",
+    "valor": 123
+  },
+  "valor_nulo": null
+}

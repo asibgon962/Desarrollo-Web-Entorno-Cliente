@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Demo JSON</title>
+</head>
+<body>
+
+<h1 id="texto">demo</h1>
+
+<script>
+// 1. Crear objeto JS
+let alumno = {
+    nombre: "Mario",
+    apellidos: "Sánchez López",
+    edad: 26,
+    curso: "DAW2",
+    asignatura: "DEWC",
+    ciudad: "El Puerto de Santa María"
+};
+
+// 2. Convertir a JSON
+let myJSON = JSON.stringify(alumno);
+
+// 3. Enviar al servidor (simulado)
+window.location = "demo_json.php?x=" + myJSON;
+
+// 4. Guardar localmente
+localStorage.setItem("alumnoJSON", myJSON);
+
+// 5. Recuperarlo
+let jsonGuardado = localStorage.getItem("alumnoJSON");
+let alumnoObj = JSON.parse(jsonGuardado);
+
+// 6. Cambiar texto por nombre del objeto
+document.getElementById("texto").innerHTML = alumnoObj.nombre;
+</script>
+
+</body>
+</html>
